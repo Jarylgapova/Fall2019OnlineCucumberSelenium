@@ -45,6 +45,19 @@ public class LoginStepDefinitions {
         loginPage.login("user19", "UserUser123");
     }
 
+    @When("user enters {string} username and {string} password")
+    public void user_enters_username_and_password(String username, String password) {
+        System.out.printf("Login with user name %s and %s password", username, password);
+        loginPage.login(username, password);
+    }
+
+    @When("user navigates to {string} and {string}")
+    public void user_navigates_to_and(String tab, String module) {
+        System.out.printf("User clicks on the %s tab and navigates to %s module\n", tab, module );
+        loginPage.navigateTo(tab, module);
+    }
+
+
 
 
 

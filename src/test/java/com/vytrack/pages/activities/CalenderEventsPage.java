@@ -48,19 +48,36 @@ public class CalenderEventsPage extends AbstractPageBase {
     @FindBy(xpath = "//label[text()='Description']/following-sibling::div//div")
     private WebElement generalInfoDescription;
 
+    @FindBy(xpath = "//*[contains(text(),'View per page:')]/following-sibling::*//a")
+    private List<WebElement> viewPerPageElements;
+
+    @FindBy(css = "button[class*='btn dropdown-toggle']")
+    private WebElement viewPerPageToggle;
+
+    public List<String> getViewPerPageOptions() {
+        BrowserUtils.waitForPageToLoad(20);
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Create Calendar event']")));
+        viewPerPageToggle.click();
+        BrowserUtils.wait(2);
+        return BrowserUtils.getTextFromWebElements(viewPerPageElements);
+    }
+
     public void enterCalendarEventTitle(String titleValue) {
         BrowserUtils.waitForPageToLoad(20);
         wait.until(ExpectedConditions.visibilityOf(title)).sendKeys(titleValue);
+        wait.until(ExpectedConditions.attributeToBe(title, "value", titleValue));
     }
 
     public void enterCalendarEventDescription(String description) {
         //wait until frame is available and switch to it
         wait.until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(descriptionFrame));
         descriptionTextArea.sendKeys(description);
+        wait.until(ExpectedConditions.textToBePresentInElement(descriptionTextArea, description));
         driver.switchTo().defaultContent();//exit from the frame
     }
 
     public void clickOnSaveAndClose() {
+        BrowserUtils.wait(3);
         wait.until(ExpectedConditions.elementToBeClickable(saveAndClose)).click();
     }
 

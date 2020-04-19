@@ -30,12 +30,14 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M4</version>
                 <configuration>
+                    <parallel>classes</parallel>
+                    <threadCount>2</threadCount>
+                    <perCoreThreadCount>false</perCoreThreadCount>
+                    <forkCount>2C</forkCount>
                     <includes>
                         <include>**/*Runner.java</include>
                     </includes>
                     <testFailureIgnore>true</testFailureIgnore>
-                    <!--                    to rerun failed tests automatically-->
-                    <!--                    <rerunFailingTestsCount>1</rerunFailingTestsCount>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -54,7 +56,7 @@
                             <outputDirectory>${project.build.directory}</outputDirectory>
                             <inputDirectory>${project.build.directory}</inputDirectory>
                             <jsonFiles>
-                                <param>**/cucumber.json</param>
+                                <param>**/cucumber*.json</param>
                             </jsonFiles>
                         </configuration>
                     </execution>
@@ -92,13 +94,13 @@
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-java</artifactId>
-            <version> 4.8.1</version>
+            <version> 4.8.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.cucumber</groupId>
             <artifactId>cucumber-junit</artifactId>
-            <version> 4.8.1</version>
+            <version>4.8.0</version>
             <scope>test</scope>
         </dependency>
 

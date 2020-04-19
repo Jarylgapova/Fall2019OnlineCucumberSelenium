@@ -41,7 +41,7 @@ public class LoginPage extends AbstractPageBase{
     public void login(String usernameValue, String passwordValue) {
         username.sendKeys(usernameValue);
         password.sendKeys(passwordValue, Keys.ENTER);
-        BrowserUtils.wait(6);
+        BrowserUtils.wait(5);
     }
 
     /**
