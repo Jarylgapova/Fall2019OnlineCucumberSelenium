@@ -36,7 +36,7 @@ public class LoginStepDefinitions {
         System.out.println("Verify that title is a Dashboard");
 
         Assert.assertEquals("Dashboard", Driver.getDriver().getTitle());
-        Driver.closeDriver();
+
     }
 
     @When("user logs in as a driver")
