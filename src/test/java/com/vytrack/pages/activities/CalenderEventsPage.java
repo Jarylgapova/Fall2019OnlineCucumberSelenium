@@ -54,6 +54,8 @@ public class CalenderEventsPage extends AbstractPageBase {
     @FindBy(css = "button[class*='btn dropdown-toggle']")
     private WebElement viewPerPageToggle;
 
+
+
     public List<String> getViewPerPageOptions() {
         BrowserUtils.waitForPageToLoad(20);
         wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("[title='Create Calendar event']")));

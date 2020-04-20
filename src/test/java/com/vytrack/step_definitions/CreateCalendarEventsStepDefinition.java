@@ -4,6 +4,8 @@ import com.vytrack.pages.activities.CalenderEventsPage;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
 
+import java.util.Map;
+
 public class CreateCalendarEventsStepDefinition {
     CalenderEventsPage calenderEventsPage  = new CalenderEventsPage();
 
@@ -40,6 +42,31 @@ public class CreateCalendarEventsStepDefinition {
     public void user_verifies_that_title_of_new_calendar_event_is(String title) {
         Assert.assertEquals(title, calenderEventsPage.getGeneralInfoTitleText());
     }
+
+    @Then("user enters new calendar event information:")
+    public void user_enters_new_calendar_event_information(Map<String, String> dataTable) {
+        // Write code here that turns the phrase above into concrete actions
+        // For automatic transformation, change DataTable to one of
+        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+        // Double, Byte, Short, Long, BigInteger or BigDecimal.
+        calenderEventsPage.enterCalendarEventDescription(dataTable.get("description"));
+        calenderEventsPage.enterCalendarEventTitle(dataTable.get("title"));
+
+    }
+
+    @Then("user verifies new calendar event was created successfully")
+    public void user_verifies_new_calendar_event_was_created_successfully(Map<String, String>  dataTable) {
+        // Write code here that turns the phrase above into concrete actions
+        // For automatic transformation, change DataTable to one of
+        // E, List<E>, List<List<E>>, List<Map<K,V>>, Map<K,V> or
+        // Map<K, List<V>>. E,K,V must be a String, Integer, Float,
+        // Double, Byte, Short, Long, BigInteger or BigDecimal.
+        Assert.assertEquals(dataTable.get("description"), calenderEventsPage.getGeneralInfoDescriptionText());
+        Assert.assertEquals(dataTable.get("title"),calenderEventsPage.getGeneralInfoTitleText());
+    }
+
+
 
 
 
