@@ -8,11 +8,11 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         glue = "com/vytrack/step_definitions",
         features = "src/test/resources/features",
-        dryRun = true,
+        dryRun = false,
         strict =  false,
-        tags = "@create_calendar_event_2",
+        tags = "@create_car",
         plugin ={ "html:target/default-report",
-                  "json:target/cucumber.json"}
+                  "json:target/cucumber1.json"}
 
 
 )
