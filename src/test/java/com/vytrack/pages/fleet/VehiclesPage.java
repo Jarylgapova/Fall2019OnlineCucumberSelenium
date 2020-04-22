@@ -43,6 +43,7 @@ public class VehiclesPage extends AbstractPageBase {
     public void clickToCreateCar(){
         WebDriverWait wait = new WebDriverWait(driver,10);
         wait.until(ExpectedConditions.elementToBeClickable(createCar)).click();
+        waitForLoaderMask();
 
     }
 
